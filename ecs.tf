@@ -16,6 +16,18 @@ data "template_file" "myapp" {
   }
 }
 
+data "template_file" "myapp2" {
+  template = file("./templates/ecs/myapp2.json.tpl")
+
+  vars = {
+    app_image      = var.app_image
+    app_port       = var.app_port
+    fargate_cpu    = var.fargate_cpu
+    fargate_memory = var.fargate_memory
+    aws_region     = var.aws_region
+  }
+}
+
 resource "aws_ecs_task_definition" "app" {
   family                   = "myapp-task"
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
