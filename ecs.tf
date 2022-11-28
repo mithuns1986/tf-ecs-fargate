@@ -42,6 +42,7 @@ resource "aws_ecs_service" "main" {
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = var.app_count
   launch_type     = "FARGATE"
+}
 
 resource "aws_ecs_service" "main2" {
   name            = "myapp-service2"
