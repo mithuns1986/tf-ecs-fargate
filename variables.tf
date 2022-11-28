@@ -20,6 +20,11 @@ variable "app_image" {
   default     = "nginx:latest"
 }
 
+variable "app_image2" {
+  description = "Docker image to run in the ECS cluster"
+  default     = "httpd:latest"
+}
+
 variable "app_port" {
   description = "Port exposed by the docker image to redirect traffic to"
   default     = 80

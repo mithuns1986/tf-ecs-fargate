@@ -33,7 +33,7 @@ resource "aws_ecs_task_definition" "app2" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.fargate_cpu
   memory                   = var.fargate_memory
-  container_definitions    = data.template_file.myapp.rendered
+  container_definitions    = data.template_file.myapp2.rendered
 }
 
 resource "aws_ecs_service" "main" {
