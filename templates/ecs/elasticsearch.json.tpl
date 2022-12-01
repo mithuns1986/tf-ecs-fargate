@@ -1,6 +1,6 @@
 [
   {
-    "name": "myapp",
+    "name": "elk",
     "image": "${app_image2}",
     "cpu": ${fargate_cpu},
     "memory": ${fargate_memory},
