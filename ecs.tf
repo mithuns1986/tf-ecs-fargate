@@ -1,7 +1,7 @@
 # ecs.tf
 
 resource "aws_ecs_cluster" "main" {
-  name = "${lower(var.env)}"-elk-cluster
+  name = "${lower(var.env)}-elk-cluster"
 }
 
 data "template_file" "logstash" {
@@ -29,7 +29,7 @@ data "template_file" "elasticserach" {
 }
 
 resource "aws_ecs_task_definition" "logstash" {
-  family                   = "${lower(var.env)}"-logstash
+  family                   = "${lower(var.env)}-logstash"
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
@@ -39,7 +39,7 @@ resource "aws_ecs_task_definition" "logstash" {
 }
 
 resource "aws_ecs_task_definition" "elasticsearch" {
-  family                   = "${lower(var.env)}"-elasticsearch
+  family                   = "${lower(var.env)}-elasticsearch"
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
@@ -49,7 +49,7 @@ resource "aws_ecs_task_definition" "elasticsearch" {
 }
 
 resource "aws_ecs_service" "logstash" {
-  name            = "${lower(var.env)}"-elk
+  name            = "${lower(var.env)}-elk"
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.logstash.arn
   desired_count   = var.app_count
